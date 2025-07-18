@@ -1,0 +1,322 @@
+:root {
+  --primary-color: #00d9ff;
+  --secondary-color: #083d56;
+  --background-color: #020a17;
+  --glow-color: rgba(0, 217, 255, 0.5);
+  --glow-color-strong: rgba(0, 217, 255, 0.8);
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: "Orbitron", sans-serif;
+  color: var(--primary-color);
+  overflow: hidden;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2300d9ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L12 22M22 12L2 12"/></svg>')
+      12 12,
+    auto;
+}
+
+.jarvis-container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  grid-template-rows: 60px 1fr 60px;
+  grid-template-areas:
+    "header header header"
+    "left-sidebar main right-sidebar"
+    "footer footer footer";
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.jarvis-header {
+  grid-area: header;
+}
+.jarvis-main {
+  grid-area: main;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jarvis-left-sidebar {
+  grid-area: left-sidebar;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.jarvis-right-sidebar {
+  grid-area: right-sidebar;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.jarvis-footer {
+  grid-area: footer;
+}
+
+.widget {
+  background: rgba(2, 23, 41, 0.3);
+  border: 1px solid var(--secondary-color);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 0 15px var(--secondary-color),
+    inset 0 0 10px var(--secondary-color);
+  border-radius: 8px;
+  padding: 15px;
+  position: relative;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.widget:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 25px var(--glow-color), inset 0 0 15px var(--secondary-color);
+}
+
+.interactive-widget {
+  cursor: pointer;
+}
+
+.widget::before,
+.widget::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--primary-color);
+  border-style: solid;
+  transition: all 0.3s ease;
+}
+.widget::before {
+  top: -5px;
+  left: -5px;
+  border-width: 2px 0 0 2px;
+}
+.widget::after {
+  top: -5px;
+  right: -5px;
+  border-width: 2px 2px 0 0;
+}
+.widget > .corner-bottom-left::before,
+.widget > .corner-bottom-right::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--primary-color);
+  border-style: solid;
+  transition: all 0.3s ease;
+}
+.widget > .corner-bottom-left::before {
+  bottom: -5px;
+  left: -5px;
+  border-width: 0 0 2px 2px;
+}
+.widget > .corner-bottom-right::before {
+  bottom: -5px;
+  right: -5px;
+  border-width: 0 0 2px 2px;
+}
+
+.widget-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px var(--glow-color);
+}
+
+.text-glow {
+  text-shadow: 0 0 8px var(--glow-color), 0 0 12px var(--glow-color);
+}
+
+#arc-reactor {
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  filter: drop-shadow(0 0 20px var(--glow-color-strong));
+  animation: pulse 4s infinite ease-in-out;
+}
+
+.arc-ring-1 {
+  animation: rotate 10s linear infinite;
+  transform-origin: center;
+}
+.arc-ring-2 {
+  animation: rotate-reverse 15s linear infinite;
+  transform-origin: center;
+}
+.arc-ring-3 {
+  animation: rotate 20s linear infinite;
+  transform-origin: center;
+}
+.arc-core {
+  animation: pulse-core 2s infinite ease-in-out;
+  transform-origin: center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 15px var(--glow-color-strong));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px var(--glow-color-strong));
+  }
+}
+@keyframes pulse-core {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.progress-bar {
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 10px;
+  border: 1px solid var(--secondary-color);
+}
+.progress-bar-fill {
+  background-color: var(--primary-color);
+  height: 100%;
+  box-shadow: 0 0 8px var(--glow-color);
+  transition: width 0.5s ease-in-out;
+}
+
+.system-status-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.typing-effect {
+  border-right: 2px solid var(--primary-color);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--primary-color);
+  }
+}
+
+.line-anim {
+  width: 0;
+  height: 1px;
+  background: var(--primary-color);
+  box-shadow: 0 0 5px var(--glow-color);
+  animation: expand-line 2s forwards;
+}
+
+@keyframes expand-line {
+  to {
+    width: 100%;
+  }
+}
+
+.intel-feed-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  max-height: 120px;
+  overflow-y: auto;
+}
+.intel-feed-list li {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--secondary-color);
+  opacity: 0;
+  animation: fade-in 0.5s forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Styles */
+.hidden {
+  display: none !important;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 10, 23, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 450px;
+  z-index: 1001;
+}
+
+/* Scanning Animation */
+.scanning {
+  animation: scan-glow 1.5s infinite;
+}
+
+@keyframes scan-glow {
+  0% {
+    box-shadow: 0 0 15px var(--secondary-color),
+      inset 0 0 10px var(--secondary-color);
+  }
+  50% {
+    box-shadow: 0 0 35px var(--primary-color),
+      inset 0 0 20px var(--primary-color);
+  }
+  100% {
+    box-shadow: 0 0 15px var(--secondary-color),
+      inset 0 0 10px var(--secondary-color);
+  }
+}

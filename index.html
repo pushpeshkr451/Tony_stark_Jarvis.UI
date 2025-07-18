@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>J.A.R.V.I.S. Inspired UI (Interactive)</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="jarvis-container">
+      <!-- Header -->
+      <header class="widget jarvis-header flex justify-between items-center">
+        <div class="text-2xl font-bold text-glow">J.A.R.V.I.S. OS</div>
+        <div id="datetime" class="text-lg font-medium text-right">
+          <div id="time"></div>
+          <div id="date" class="text-sm"></div>
+        </div>
+        <div class="corner-bottom-left"></div>
+        <div class="corner-bottom-right"></div>
+      </header>
+
+      <!-- Left Sidebar -->
+      <aside class="jarvis-left-sidebar">
+        <div class="widget flex-1">
+          <div class="widget-title">System Status</div>
+          <div class="line-anim" style="animation-delay: 0.2s"></div>
+          <ul class="system-status-list text-sm space-y-2">
+            <li>
+              <span>Main Power</span>
+              <span class="font-bold text-green-400">ONLINE</span>
+            </li>
+            <li>
+              <span>Shields</span>
+              <span class="font-bold text-cyan-400">ACTIVE</span>
+            </li>
+            <li>
+              <span>Network</span>
+              <span class="font-bold text-green-400">STABLE</span>
+            </li>
+            <li>
+              <span>Propulsion</span>
+              <span class="font-bold text-yellow-400">STANDBY</span>
+            </li>
+            <li>
+              <span>Life Support</span>
+              <span class="font-bold text-green-400">OPTIMAL</span>
+            </li>
+          </ul>
+          <div class="widget-title mt-4">Energy Levels</div>
+          <div class="line-anim" style="animation-delay: 0.4s"></div>
+          <div class="space-y-3">
+            <div>
+              <label class="text-sm">Core Reactor</label>
+              <div class="progress-bar">
+                <div id="core-power" class="progress-bar-fill"></div>
+              </div>
+            </div>
+            <div>
+              <label class="text-sm">Auxiliary Power</label>
+              <div class="progress-bar">
+                <div id="aux-power" class="progress-bar-fill"></div>
+              </div>
+            </div>
+            <div>
+              <label class="text-sm">Suit Battery</label>
+              <div class="progress-bar">
+                <div id="suit-power" class="progress-bar-fill"></div>
+              </div>
+            </div>
+          </div>
+          <div class="corner-bottom-left"></div>
+          <div class="corner-bottom-right"></div>
+        </div>
+        <div class="widget flex-1">
+          <div class="widget-title">Intel Feed</div>
+          <div class="line-anim" style="animation-delay: 0.6s"></div>
+          <ul id="intel-feed" class="intel-feed-list"></ul>
+          <div class="corner-bottom-left"></div>
+          <div class="corner-bottom-right"></div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="jarvis-main">
+        <svg id="arc-reactor" viewBox="0 0 200 200">
+          <defs>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3.5" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <linearGradient
+              id="core-gradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" style="stop-color: #b4faff; stop-opacity: 1" />
+              <stop
+                offset="100%"
+                style="stop-color: #00d9ff; stop-opacity: 1"
+              />
+            </linearGradient>
+          </defs>
+          <circle
+            class="arc-core"
+            cx="100"
+            cy="100"
+            r="20"
+            fill="url(#core-gradient)"
+            filter="url(#glow)"
+          />
+          <g
+            class="arc-ring-1"
+            stroke="var(--primary-color)"
+            stroke-width="4"
+            fill="none"
+          >
+            <circle cx="100" cy="100" r="40" />
+            <path d="M 100 50 A 50 50 0 0 1 150 100" />
+            <path d="M 100 150 A 50 50 0 0 1 50 100" />
+          </g>
+          <g
+            class="arc-ring-2"
+            stroke="var(--primary-color)"
+            stroke-width="2"
+            fill="none"
+            opacity="0.6"
+          >
+            <circle cx="100" cy="100" r="65" />
+          </g>
+          <g
+            class="arc-ring-3"
+            stroke="var(--primary-color)"
+            stroke-width="1"
+            fill="none"
+            opacity="0.4"
+          >
+            <circle cx="100" cy="100" r="85" />
+            <path d="M 25 100 A 75 75 0 0 1 100 25" />
+            <path d="M 175 100 A 75 75 0 0 1 100 175" />
+          </g>
+        </svg>
+      </main>
+
+      <!-- Right Sidebar -->
+      <aside class="jarvis-right-sidebar">
+        <div class="widget flex-1">
+          <div class="widget-title">Location</div>
+          <div class="line-anim" style="animation-delay: 0.8s"></div>
+          <div class="text-lg font-bold">Kolkata, IN</div>
+          <div class="text-sm opacity-80">25.19° N, 85.51° E</div>
+          <div
+            class="w-full h-24 bg-gray-900/50 mt-3 rounded-md border border-cyan-700/50 flex items-center justify-center"
+          >
+            <div class="text-cyan-400 text-sm">TARGET LOCKED</div>
+          </div>
+          <div class="corner-bottom-left"></div>
+          <div class="corner-bottom-right"></div>
+        </div>
+        <div id="threat-widget" class="widget flex-1 interactive-widget">
+          <div class="widget-title">Threat Analysis</div>
+          <div class="line-anim" style="animation-delay: 1s"></div>
+          <ul id="threat-list" class="system-status-list text-sm space-y-2">
+            <li>
+              <span>Proximity Alert</span>
+              <span class="font-bold text-red-500">NONE</span>
+            </li>
+            <li>
+              <span>Hostiles</span>
+              <span id="hostiles-count" class="font-bold text-green-400"
+                >0</span
+              >
+            </li>
+            <li>
+              <span>Unknown Signatures</span>
+              <span class="font-bold text-yellow-400">1</span>
+            </li>
+          </ul>
+          <div
+            id="scan-status"
+            class="text-center mt-2 text-cyan-400 h-5"
+          ></div>
+          <div class="corner-bottom-left"></div>
+          <div class="corner-bottom-right"></div>
+        </div>
+        <div id="weather-widget" class="widget flex-1 interactive-widget">
+          <div class="widget-title">Weather</div>
+          <div class="line-anim" style="animation-delay: 1.2s"></div>
+          <ul class="system-status-list text-sm space-y-2">
+            <li><span>Condition</span> <span id="condition">Haze</span></li>
+            <li><span>Temperature</span> <span id="temp">31°C</span></li>
+            <li><span>Humidity</span> <span id="humidity">75%</span></li>
+            <li><span>Wind</span> <span id="wind">10 km/h W</span></li>
+          </ul>
+          <div class="corner-bottom-left"></div>
+          <div class="corner-bottom-right"></div>
+        </div>
+      </aside>
+
+      <!-- Footer -->
+      <footer class="widget jarvis-footer flex items-center">
+        <span class="mr-2 font-bold text-glow">></span>
+        <div id="status-text" class="typing-effect">
+          All systems are functioning within normal parameters...
+        </div>
+        <div class="corner-bottom-left"></div>
+        <div class="corner-bottom-right"></div>
+      </footer>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modal-overlay" class="modal-overlay hidden"></div>
+    <div id="weather-modal" class="widget modal hidden">
+      <button
+        id="close-modal-btn"
+        class="absolute top-2 right-3 text-2xl font-bold hover:text-red-500"
+      >
+        &times;
+      </button>
+      <div class="widget-title">Detailed Weather Report</div>
+      <div class="line-anim" style="animation-delay: 0.1s"></div>
+      <ul class="system-status-list text-base space-y-3 mt-4">
+        <li><span>Feels Like</span> <span id="feels-like">34°C</span></li>
+        <li><span>Pressure</span> <span id="pressure">1012 hPa</span></li>
+        <li><span>Visibility</span> <span id="visibility">5.0 km</span></li>
+        <li><span>UV Index</span> <span id="uv-index">8 (Very High)</span></li>
+        <li><span>Dew Point</span> <span id="dew-point">26°C</span></li>
+      </ul>
+      <div class="corner-bottom-left"></div>
+      <div class="corner-bottom-right"></div>
+    </div>
+
+    <!-- Tone.js for sound -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
