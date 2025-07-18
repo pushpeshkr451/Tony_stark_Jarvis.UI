@@ -51,12 +51,12 @@ To run this project locally, follow these simple steps:
 
 1.  **Clone the repository:**
     ```bash
-   
+   gh repo clone pushpeshkr451/Tony_stark_Jarvis.UI
     ```
 
 2.  **Navigate to the project directory:**
     ```bash
-    cd your-repo-name
+    cd Tony_stark_Jarvis.UI
     ```
 
 3.  **Open the `index.html` file in your browser:**
