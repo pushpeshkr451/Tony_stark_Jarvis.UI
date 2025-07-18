@@ -48,7 +48,7 @@ To run this project locally, follow these simple steps:
 
 1.  **Clone the repository:**
     ```bash
-   gh repo clone pushpeshkr451/Tony_stark_Jarvis.UI
+     gh repo clone pushpeshkr451/Tony_stark_Jarvis.UI
     ```
 
 2.  **Navigate to the project directory:**
