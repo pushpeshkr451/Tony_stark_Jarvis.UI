@@ -10,9 +10,6 @@ A web-based, interactive user interface inspired by Tony Stark's J.A.R.V.I.S. sy
 
 ---
 
-## Preview
-
-![J.A.R.V.I.S. UI in action]
 
 ## Features
 
