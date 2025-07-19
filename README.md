@@ -78,7 +78,7 @@ That's it! No complex build steps or dependencies are required.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## Acknowledgments
 
