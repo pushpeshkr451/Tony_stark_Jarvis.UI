@@ -83,4 +83,6 @@ This project is licensed under the MIT License.
 ## Acknowledgments
 
 - This project is a tribute to the incredible visual effects and design from the **Marvel Cinematic Universe**.
+- This project is a tribute to the **Tony Stark JARVIS**. 
 - The sound library **Tone.js** for making web audio easy and fun.
+  
