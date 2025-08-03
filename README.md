@@ -76,10 +76,6 @@ That's it! No complex build steps or dependencies are required.
 - [ ] Connect to real APIs for weather and news data.
 - [ ] Refactor JavaScript into modules for better organization.
 
-## License
-
-This project is licensed under the MIT License.
-
 ## Acknowledgments
 
 - This project is a tribute to the incredible visual effects and design from the **Marvel Cinematic Universe**.
