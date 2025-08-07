@@ -2,8 +2,6 @@
 
 A web-based, interactive user interface inspired by Tony Stark's J.A.R.V.I.S. system from the Iron Man movies. This project is a front-end showcase built with pure HTML, CSS, and JavaScript to create a dynamic, futuristic, and immersive heads-up display (HUD).
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 ---
 
 ### [Live Demo](https://tony-stark-jarvis-ui.vercel.app/) &nbsp;
