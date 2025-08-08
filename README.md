@@ -78,5 +78,5 @@ That's it! No complex build steps or dependencies are required.
 
 - This project is a tribute to the incredible visual effects and design from the **Marvel Cinematic Universe**.
 - This project is a tribute to the **Tony Stark JARVIS**. 
-- The sound library **Tone.js** for making web audio easy and fun.
+- The sound library **Tone.js** for making web audio easy and fun
   
